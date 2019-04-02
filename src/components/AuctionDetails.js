@@ -7,8 +7,8 @@ function AuctionDetails(props) {
      
      <p> Description: {props.description}<br />
 
-    Started: {new Date (props.created_at).toDateString()}<br /> 
-    Ends: {new Date (props.end).toDateString()}<br />
+    Started: {new Date (props.created_at).toLocaleString()}<br /> 
+    Ends: {new Date (props.end).toLocaleString()}<br />
     Reserve price: ${props.reserve}</p>
 
    </div>

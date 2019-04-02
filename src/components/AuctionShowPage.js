@@ -23,6 +23,7 @@ export class AuctionShowPage extends Component {
             this.setState({
                 auction: auction,
                 isLoading: false,
+                currentPrice: 0
             });
         });
 
@@ -36,15 +37,27 @@ export class AuctionShowPage extends Component {
 
         if (!this.state.isLoading && this.state.auction) {
             console.log(auction.bids)
+            
+
+
+            if (this.state.auction.bids.length > 0 ){
+                this.currentPrice = this.state.auction.bids[0].amount
+            }
+            else{
+                this.currentPrice = 0;
+            }
+
             return (
                 <main>
                     <AuctionDetails {...auction} />
                     <br />
                     
-                    <h1> Current Bid: ${this.state.auction.bids[0].amount} </h1>
+                        <h1 id="current-bid"> Highest Bid: ${this.currentPrice} </h1>
+                    
                    
 
                         <BidForm  onSubmit={this.createBid}  auction_id={this.props.match.params.id} />
+                        <br />
                         <br />
                     <h1>Previous Bids</h1>
                     <ul id="bid-list">
@@ -52,7 +65,7 @@ export class AuctionShowPage extends Component {
                             let date = new Date (bid.created_at)
               
                             return (
-                                <li key={bid.id}> ${bid.amount} on {date.toDateString()} </li>
+                                <li key={bid.id}> ${bid.amount} on {date.toLocaleString()} </li>
                             )
                         })}
 
@@ -70,6 +83,7 @@ export class AuctionShowPage extends Component {
 
 
     createBid(params) {
+
         Bid.create(params).then(data => {
             if (data.errors) {
                 this.setState({
@@ -77,8 +91,9 @@ export class AuctionShowPage extends Component {
                 });
             } else {
 
-            $("#bid-list").prepend(`<li>${params}</li>`)
-
+            $("#bid-list").prepend(`<li>$${params.amount} on ${new Date(Date.now()).toDateString()}</li>`)
+            $("#current-bid").html(`Highest Bid: $${params.amount}`)
+            $("#amount").val('');
             }
         });
     }

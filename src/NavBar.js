@@ -16,7 +16,7 @@ function NavBar(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div className="container">
-        <div className="navbar-brand" href="/">Your logo here</div>
+        <div className="navbar-brand" href="/">Auctioneer.com</div>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,8 @@ function NavBar(props) {
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active"> <NavLink to="/" className="nav-link">Home</NavLink></li>
-            <li className="nav-item active"> <NavLink to="/auctions" className="nav-link">Auctions</NavLink></li>
+            <li className="nav-item active"> <NavLink to="/new_auction" className="nav-link">New Auction</NavLink></li>
+            <li className="nav-item active"> <NavLink to="/auctions" className="nav-link">Open Auctions</NavLink></li>
 
             {!currentUser && (<li className="nav-item active"><NavLink to="/sign_in" className="nav-link">Sign In</NavLink></li>)}
 

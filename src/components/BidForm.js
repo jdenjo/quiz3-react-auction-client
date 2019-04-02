@@ -21,12 +21,11 @@ function PostForm(props) {
  return (
    <form className="PostForm" onSubmit={handleSubmit} >
      <div>
-       <label htmlFor="Amount">Amount</label> <br />
+       <label htmlFor="Amount">Bid Amount ($CAD)</label> <br />
        <FormErrors forField="title" errors={errors} />
        <input name="amount" id="amount" />
-     </div>
-     <div>
-       <input type="submit" value="Submit" />
+    
+       <input type="submit" value="Bid on Item" />
      </div>
    </form>
  );

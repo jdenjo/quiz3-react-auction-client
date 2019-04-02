@@ -5,6 +5,8 @@ import { User, Session } from "./Requests";
 import AuctionIndexPage from './components/AuctionIndexPage'
 import AuctionShowPage from './components/AuctionShowPage'
 import SignInPage from './components/SignInPage'
+import AuctionNewPage from './components/AuctionNewPage'
+import Home from './components/Home'
 import AuthRoute from "./AuthRoute";
 
 
@@ -77,9 +79,24 @@ class App extends Component {
              <div className="article-content">
                {/* this is similar to the routes.rb page in ruby */}
                <Switch>
+               <Route path="/" exact component={Home} />
                  <Route path="/auctions" exact component={AuctionIndexPage} />
-                 <Route path="/auctions/:id" exact component={AuctionShowPage} />
-                 <Route path="/sign_in" exact component={SignInPage} />
+                 <AuthRoute
+                    isAuthenticated={currentUser}
+                    path="/new_auction"
+                    component={AuctionNewPage}
+                  />
+                                   <AuthRoute
+                    isAuthenticated={currentUser}
+                    path="/auctions/:id"
+                    component={AuctionShowPage}
+                  />
+                 <Route
+                    path="/sign_in"
+                    render={routeProps => (
+                      <SignInPage onSignIn={this.getUser} {...routeProps} />
+                    )}
+                  />
                </Switch>
              </div>
            </div>

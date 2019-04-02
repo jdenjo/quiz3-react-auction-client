@@ -29,7 +29,7 @@ const Auction = {
  create(params) {
    // `params` is an object that represents a question
    // { body: 'qBody', title: 'qTitle' }
-   return fetch(`${BASE_URL}posts`, {
+   return fetch(`http://localhost:3000/auctions`, {
      method: "POST",
      credentials: "include",
      headers: {
@@ -38,6 +38,7 @@ const Auction = {
      body: JSON.stringify(params)
    }).then(res => res.json());
  },
+ 
  // updating a question
  update(id, params) {
    return fetch(`${BASE_URL}posts/${id}`, {
@@ -49,6 +50,7 @@ const Auction = {
      body: JSON.stringify(params)
    }).then(res => res.json());
  },
+ 
  delete(id) {
    return fetch(`${BASE_URL}posts/${id}`, {
      method: "DELETE",

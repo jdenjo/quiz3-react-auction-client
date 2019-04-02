@@ -29,16 +29,17 @@ export class AuctionIndexPage extends Component {
    if (!this.state.isLoading) {
      return (
        <div className="AuctionIndexPage">
-         <h1>Auctions</h1>
-         <ul>
+         <h1>Open Auctions</h1>
+   
            {this.state.auctions.map((auction) => {
              return (
-               <li key={auction.id}>
-                 <Link to={`/auctions/${auction.id}`}>{auction.title}</Link>
-               </li>
+               <p key={auction.id}>
+                 <Link to={`/auctions/${auction.id}`}>{auction.title}</Link> <br />
+                 Posted on {new Date(auction.created_at).toLocaleString()}
+               </p>
              )
            })}
-         </ul>
+   
        </div>
      )
    }

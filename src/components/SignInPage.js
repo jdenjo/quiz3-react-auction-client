@@ -34,16 +34,10 @@ class SignInPage extends Component {
          errors: [{ message: "Wrong email or password" }]
        });
      } else {
-       this.props.history.push(`/`);
-       // The "history", "location" & "match" props are available to
-       // any component that is rendered by <Route> component from
-       // "react-router-dom"
 
-       // Docs on props from <Route>:
-       // https://reacttraining.com/react-router/web/api/history
-       if (typeof this.props.onSignIn === "function") {
-         this.props.onSignIn();
-       }
+
+        this.props.history.push(`/`);
+        this.props.onSignIn();
      }
    });
  }
