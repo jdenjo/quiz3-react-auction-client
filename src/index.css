@@ -17,3 +17,11 @@ code {
 .article-content{
   padding-top: 15px;
 }
+
+#bid-warning{
+  color: red
+}
+
+#bid-success{
+  color: green
+}

@@ -12,6 +12,12 @@ const Bid = {
           body: JSON.stringify(params)
         }).then(res => res.json());
       },
+      one(auctionID) {
+        return fetch(`http://localhost:3000/bids/${auctionID}`).then(
+          res => console.log(res.json())
+          
+        );
+      }
 }
 
 const Auction = {
