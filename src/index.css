@@ -12,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.article-content{
+  padding-top: 15px;
+}
+
+#bid-warning{
+  color: red
+}
+
+#bid-success{
+  color: green
+}
